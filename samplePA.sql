@@ -1,10 +1,10 @@
-ROLLBACK;
+--ROLLBACK;
 
 DROP TABLE IF EXISTS machines_owners;
 DROP TABLE IF EXISTS groups_customers;
 DROP TABLE IF EXISTS groups;
 DROP TABLE IF EXISTS machines;
-DROP FUNCTION IF EXISTS emp_stamp;
+--DROP FUNCTION IF EXISTS emp_stamp;
 DROP TABLE IF EXISTS customers;
 
 CREATE TABLE customers (
