@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS machines_owners;
 DROP TABLE IF EXISTS groups_customers;
 DROP TABLE IF EXISTS groups;
 DROP TABLE IF EXISTS machines;
+DROP FUNCTION IF EXISTS emp_stamp;
 DROP TABLE IF EXISTS customers;
 
 CREATE TABLE customers (
@@ -48,6 +49,20 @@ CREATE TABLE machines_owners (
     FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
     FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE
 );
+
+/* alternative way
+CREATE FUNCTION emp_stamp() RETURNS trigger AS $emp_stamp$
+    BEGIN
+        IF NEW.name LIKE 'csoport' THEN
+            RAISE EXCEPTION 'works!';
+        END IF;
+        RETURN NEW;
+    END;
+$emp_stamp$ LANGUAGE plpgsql;
+
+CREATE TRIGGER emp_stamp BEFORE INSERT OR UPDATE ON groups
+    FOR EACH ROW EXECUTE PROCEDURE emp_stamp();
+*/
 
 /*Add new customer*/
 BEGIN;
