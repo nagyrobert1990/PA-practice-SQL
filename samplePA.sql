@@ -1,4 +1,4 @@
---ROLLBACK;
+ROLLBACK;
 
 DROP TABLE IF EXISTS machines_owners;
 DROP TABLE IF EXISTS groups_customers;
